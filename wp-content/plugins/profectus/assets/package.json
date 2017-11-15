@@ -1,0 +1,22 @@
+{
+  "name": "bridge-child",
+  "version": "1.0.0",
+  "description": "Grunt taskrunner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LongbeardCreative/sass-master.git"
+  },
+  "author": "LB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LongbeardCreative/sass-master/issues"
+  },
+  "homepage": "https://github.com/LongbeardCreative/sass-master#readme",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  }
+}

@@ -1,0 +1,193 @@
+.ct-builder .ct-highlight-selector {  
+    outline: 2px dashed rgba(106,202,106,1);
+    outline-offset: 3px;
+    z-index: 2147483641;
+}
+.ct-choose-selector-wrap {
+    display: none;
+}
+.ct-choose-selector-active {
+    display: block;
+}
+.ct-choose-selector {
+    background: #5a666f;
+    border: 1px solid #141618;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1), 3px 3px 10px rgba(0,0,0,0.4) !important;
+    padding: 0px;
+    color: #fff;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 2147483643;
+    width: 300px;
+    height: auto !important;
+}
+
+.ct-choose-selector select {
+    margin-top: 6px;
+    border-radius: 0px !important;
+    font-size: 16px;
+    font-family: monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+#ct-choose-selector-content {
+/*
+box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+background-color: rgba(0,0,0,0.2);
+*/
+    padding: 6px;
+}
+
+#ct-choose-selector-content > span {
+    font-size:12px;
+    font-weight:300;
+    display:block;
+    margin: 40px;
+    text-align: center;
+}
+
+.ct-choose-selector-heading {
+    background-color: rgba(0,0,0,0.2);
+    cursor: move;
+    padding: 8px;
+    padding-top: 7px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Lato";
+}
+.ct-choose-selector-item-heading {
+    background-color: #37414A;
+    border: 1px solid #111111;
+    color: #ffffff;
+    font-family: "Open-Sans-Bold", Helvetica, arial, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px 6px;
+    word-break: break-all;
+    font-family: monospace;
+    -webkit-font-smoothing: antialiased;
+}
+.ct-choose-selector-item-heading:hover + .ct-choose-selector-variants {
+    display: block;
+}
+.ct-choose-selector-item-active.ct-choose-selector-item-heading {
+    background-color: #5DAEEA;
+    border: 1px solid #0A2D48;
+    border: 1px solid rgba(255, 255, 255, 0.73) !important;    
+    color: #000000;
+    color: #fff;
+}
+
+.ct-choose-selector-item {
+    position: relative;
+}
+.ct-choose-selector-item .ct-choose-selector-item {
+    margin: 4px 0 0 12px;
+}
+.ct-choose-selector-variants {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: #5a666f;
+    padding: 0px;
+    font-family: monospace;
+    font-size: 12px;
+    padding: 6px;
+}
+
+.ct-choose-selector-variants:hover {
+    display: block;
+}
+.ct-choose-selector-variant {
+    cursor: pointer;
+    padding: 4px 6px;
+    background-color: #37414A;
+    border: 1px solid #111111;
+    margin-bottom: 4px;
+}
+
+.ct-choose-selector-variant:last-child {
+    margin-bottom: 0px;
+}
+
+
+.ct-choose-selector-variant-active {
+    background: rgba(255,255,255,0.3); /* highlighted variant, inactive */
+    border: 1px solid rgba(255, 255, 255, 0.73) !important;    
+}
+.ct-choose-selector-item-active + .ct-choose-selector-variants .ct-choose-selector-variant-active {
+    border: 1px solid #0A2D48;
+    border: 1px solid rgba(255, 255, 255, 0.73) !important;
+    color: #000000;
+    color: #fff;
+    background-color: #5DAEEA; /*active variant*/
+}
+.ct-choose-selector-variant:hover {
+    background-color: rgba(255,255,255,0.1); /* inactive variant hover */
+}
+
+.ct-choose-selector-item-active + .ct-choose-selector-variants .ct-choose-selector-variant:hover {
+    background-color: #3D8ECA; /* active variant hover */
+}
+.ct-applied-selectors-list {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 100%;
+    margin: 0 6px;
+    padding: 4px 0px;
+    width: 288px;
+    outline: none;
+}
+.ct-hide-choose-selector-icon {
+    font-family: 'Flaticons-Solid';
+    speak: none;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    border-radius: 50%;
+    color: #5a666f;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.ct-hide-choose-selector-icon:before {
+    content: "\e1bb";
+    display: block;
+    padding: 1px;
+}
+.ct-choose-selector-bottom-options {
+    margin: 0;
+    padding: 8px;
+    background-color: rgba(0,0,0,0.1);
+    font-size: 13px;
+    font-weight: 300;
+    font-family: "Lato";
+}
+
+.ct-choose-selector-bottom-options label {
+    display: block;
+    cursor: pointer;
+    float: left;
+}
+
+.ct-choose-selector-bottom-options label:first-child {
+    margin-bottom: 4px;
+}
+
+.ct-choose-selector-bottom-options label input {
+    margin-right: 3px;
+}
+
+.ct-choose-selector-bottom-options::after {
+    content:"";
+    display:block;
+    clear:both;    
+}

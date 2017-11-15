@@ -1,0 +1,200 @@
+/******************************************************************
+Stylesheet: Mixins Stylesheet
+******************************************************************/
+/*********************
+TRANSITION
+*********************/
+@mixin transition($transition...) {
+    // defining prefixes so we can use them in mixins below
+    $prefixes: ("-webkit-", "" );
+    @each $prefix in $prefixes {
+        #{$prefix}transition: $transition;
+    }
+}
+/*********************
+CSS3 GRADIENTS
+*********************/
+/* @include css-gradient(#dfdfdf,#f8f8f8); */
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+    background-color: $to;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background-image: -webkit-linear-gradient(top, $from, $to);
+    background-image: -moz-linear-gradient(top, $from, $to);
+    background-image: -o-linear-gradient(top, $from, $to);
+    background-image: linear-gradient(to bottom, $from, $to);
+}
+/*********************
+BOX SIZING
+*********************/
+/* @include box-sizing(border-box); */
+@mixin box-sizing($type: border-box) {
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    -ms-box-sizing: $type;
+    box-sizing: $type;
+}
+/**********************
+BUTTONS
+**********************/
+%btn {
+    border-width: 0 !important;
+    border-radius: 0 !important;
+    font: $h6;
+    padding: 0 !important;
+    width: auto;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        transition: 300ms;
+    }
+
+    &:hover {
+        opacity: 1 !important;
+        background-color: transparent !important;
+
+        &::after {
+            height: calc(100% + 3px);
+            opacity: 0.3;
+        }
+    }
+}
+
+@mixin btn($btn-color) {
+    &::after {
+        background: $btn-color;
+    }
+
+    &:hover {
+        color: $btn-color !important;
+    }
+
+    @extend %btn;
+}
+/**********************
+PADDING
+**********************/
+@mixin padding($param) {
+     @if $param == horizontal{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    @else if $param == vertical {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @else if $param == vertical-sm {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    @else if $param == vertical-lg {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+/**************************
+RESPONSIVE RATIO
+**************************/
+@mixin ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    }
+    @else {
+        padding-top: $padding;
+    }
+}
+/*************************
+MEDIA QUERY (MQ)
+*************************/
+@import 'breakpoint';
+/************************
+CENTER DIV
+************************/
+@mixin center {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+/*********************************
+SVG BACKGROUND IMAGE WITH FALLBACK
+*********************************/
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false) {
+    background-image: url("#{$image-path}/#{$name}.svg");
+    @if($size) {
+        background-size: $size;
+    }
+
+    .no-svg & {
+        background-image: url("#{$image-path}/#{$name}.#{$fallback-extension}");
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+            background-image: url("#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension}");
+        }
+    }
+}
+/* USAGE
+.lb_div {
+    @include background-image('bg');
+}
+** must have bg.svg, bg.png & bg@2x.png
+*/
+
+/*********************************
+HiDPI RESOLUTION QUERIES
+*********************************/
+
+/* Mixin by Pierre Burel: https://github.com/pierreburel/sass-resolution */
+
+$resolution-default: 2 !default;
+$resolution-presets: (
+  "ldpi" 75%,
+  "mdpi" 100%,
+  "hdpi" 150%,
+  "xhdpi" 200%,
+  "xxhdpi" 300%,
+  "xxxhdpi" 400%,
+  "retina" 2,
+  "@2x" 2,
+  "@3x" 3
+) !default;
+
+@function resolution-preset($resolution) {
+  @if type-of($resolution) == "string" {
+    @each $preset in $resolution-presets {
+      @if nth($preset, 1) == $resolution {
+        @return nth($preset, 2)
+      }
+    }
+  }
+  @return $resolution;
+}
+
+@mixin resolution($resolution: $resolution-default) {
+  $resolution: resolution-preset($resolution);
+  @if type-of($resolution) == "number" {
+    @if unit($resolution) == "dpi" {
+      $resolution: $resolution / 96dpi;
+    } @else if unit($resolution) == "%" {
+      $resolution: $resolution / 100%;
+    } @else {
+      $resolution: $resolution / ($resolution * 0 + 1)
+    }
+    @media (-webkit-min-device-pixel-ratio: #{$resolution}), (min-resolution: #{$resolution * 96dpi}) {
+      @content;
+    }
+  } @else {
+    @error "#{$resolution} is not a valid resolution or preset";
+  }
+}

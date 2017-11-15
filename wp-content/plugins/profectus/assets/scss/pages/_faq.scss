@@ -1,0 +1,46 @@
+/******************************************************************
+Stylesheet: FAQ Page
+
+Styles for faq ONLY. If the styles will be used across the site,
+use the _base.scss file.
+******************************************************************/
+//PAGE GLOBALS
+.nav-header {
+	border-color: $color1 !important;
+
+	@include breakpoint(min-width 601px) {
+
+	&:not(.active) .menu-text,
+	.menu-logo {
+		color: $color1 !important;
+	}
+}
+}
+
+@include breakpoint(600px) {
+	.footer-form {
+		display: none;
+	}
+}
+
+.nav-row {
+	padding-top: $col-vw;
+	padding-bottom: $col-vw / 2;
+
+	.page-title {
+		color: $color1;
+		text-align: center;
+	}
+}
+
+.about-row {
+
+}
+
+.logisitics-row {
+
+}
+
+.requirements-row {
+	margin-bottom: $col-vw;
+}

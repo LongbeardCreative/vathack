@@ -1,0 +1,787 @@
+/******************************************************************
+Stylesheet: Home Page
+
+Styles for homepage ONLY. If the styles will be used across the site,
+use the _base.scss file.
+******************************************************************/
+//HERO SECTION
+.hero-row {
+	.hero-img {
+		height: $col-vw * 5;
+		max-width: 960px;
+		object-fit: cover;
+
+		@include breakpoint(600px) {
+			display: none;
+		}
+	}
+
+	.hero-svg {
+		width: $col-vw * 1.25;
+		position: absolute;
+		top: $col-vw * 3.5;
+		left: 50%;
+		transform: translateX(-50%);
+
+		@include breakpoint(600px) {
+			display: none;
+		}
+	}
+
+	@include breakpoint(600px) {
+		.hero-text-col {
+			flex-basis: 100%;
+		}
+	}
+
+
+	.hero-text {
+		background-color: $color1;
+		color: $white;
+		height: $col-vw * 4.5;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		@include breakpoint(600px) {
+			background-image: linear-gradient(rgba(25, 25, 25, 0.52), rgba(25, 25, 25, 0.52)), url(/wp-content/uploads/vatican_city-web-ready327526960_6b5cc43e0d_o-1.jpg);
+			overlay-color: rgba(25, 25, 25, 0.52);
+			background-size: cover;
+			background-position: center;
+			height: 60vh;
+		}
+
+
+		.hero-info {
+			display: flex;
+			width: 100%;
+
+			@include breakpoint(600px) {
+				width: auto;
+			}
+
+
+			> span {
+				flex-basis: 50%;
+
+				@include breakpoint(600px) {
+					flex-basis: auto;
+				}
+			}
+		}
+
+		.title-location {
+			border-right: solid $border $white;
+			padding-right: $col-vw / 4;
+			text-align: right;
+			font-size: 1.2em;
+
+			@include breakpoint(600px) {
+				height: 1.8em;
+			}
+		}
+
+		.title-date {
+			padding-left: $col-vw / 4;
+			align-self: flex-end;
+
+			@include breakpoint(600px) {
+				align-self: flex-start;
+				font-size: 1.2em;
+			}
+		}
+	}
+
+	.hero-line {
+		background: $color3;
+		width: 3px;
+		transform: translateY(-50%);
+		margin: 0 auto;
+		height: $col-vw * 0.66;
+
+		@include breakpoint(600px) {
+			display: none;
+		}
+	}
+
+	.hero-thick-line {
+		background: $color3;
+		width: 11px;
+		height: $col-vw * 3.33;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		@include breakpoint(1000px) {
+			display: none;
+		}
+	}
+}
+
+//POPE SECTION
+.pope-row {
+	padding-top: $col-vw / 1.5;
+	margin-bottom: $col-vw;
+
+	@include breakpoint(768px) {
+		padding-top: $col-vw;
+		margin-bottom: $col-vw / 2;
+	}
+
+
+	@include breakpoint(600px) {
+		.ct-columns > div {
+			flex-wrap: wrap;
+		}
+	}
+
+
+	.call-to-hack {
+		padding-right: $col-vw;
+
+		@include breakpoint(1000px) {
+			padding-right: 0;
+		}
+
+
+		@include breakpoint(768px) {
+			width: ($col * 7) !important;
+			padding-bottom: 0;
+		}
+
+
+		@include breakpoint(600px) {
+			flex-basis: 100%;
+			order: 1;
+		}
+
+
+		.call-text {
+			padding: ($col-vw * 1.5) $col-vw;
+			background-position: center;
+			background-size: cover;
+
+			.call-title {
+				margin-bottom: $col-vw / 4;
+			}
+
+			.call-sub {
+				margin-bottom: $col-vw / 4;
+				display: inline-block;
+
+				&::after {
+					content: '';
+					width: 65%;
+					height: 3px;
+					background: $color3;
+					display: block;
+					margin-top: 3px;
+				}
+			}
+		}
+	}
+
+	.pope {
+		margin-top: $col-vw / 2;
+
+		@include breakpoint(768px) {
+			width: ($col * 5) !important;
+		}
+
+
+		@include breakpoint(600px) {
+			flex-basis: 100%;
+			margin-top: $col-vw / 3;
+			display: flex;
+			flex-direction: column;
+		}
+
+
+		.pope-img {
+			opacity: 0.55;
+			width: 100%;
+
+			@include breakpoint(600px) {
+				width: $col-vw * 9;
+				opacity: 0.19;
+				align-self: flex-end;
+			}
+		}
+
+		.pope-quote {
+			padding-top: $col-vw / 8;
+			padding-right: $col-vw;
+			border-top: $border solid $color3;
+
+			@include breakpoint(1000px) {
+				margin-left: $col-vw;
+			}
+
+
+			@include breakpoint(600px) {
+				padding: ($col-vw / 2) $col-vw;
+				border: 0;
+				margin-left: 0;
+				margin-top: -$col-vw * 1.5;
+				margin-bottom: $col-vw;
+				background-image: linear-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 90%);
+				z-index: 3;
+
+				&::before {
+					content: '';
+					width: $col-vw * 6.5;
+					height: $border;
+					background: $color3;
+					display: block;
+					position: absolute;
+					margin-top: -$col-vw / 2;
+					left: 0;
+				}
+			}
+
+
+			::after {
+				content: '';
+				width: $col-vw * 3.5;
+				height: $border;
+				background: $color3;
+				display: block;
+				margin-top: $col-vw / 8;
+				right: 0;
+				position: absolute;
+
+				@include breakpoint(600px) {
+					margin-top: $col-vw / 2;
+					left: 0;
+					width: $col-vw * 10;
+				}
+			}
+		}
+	}
+}
+
+//UNIVERSITIES
+.universities-row {
+	.university-list {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		margin: $col-vw 0;
+		border-left: ($border * 3) solid $color3;
+
+		@include breakpoint(768px) {
+			border: 0;
+		}
+
+
+		span {
+			font: $h3;
+			font-weight: 600;
+			color: $color1;
+		}
+	}
+}
+
+//RELIGION
+.religions-row {
+	background: linear-gradient(to right, $color2 0%, $color2 16.69%, rgba(231, 56, 39, 0) 16.7%, rgba(231, 56, 39, 0) 100%);
+	padding-top: $col-vw / 2;
+
+	@include breakpoint(600px) {
+		background: none;
+		padding-bottom: $col-vw * 3;
+	}
+
+
+	.religions-img-col {
+		padding-left: $col-vw / 2;
+
+		@include breakpoint(768px) {
+			width: ($col-vw * 5) !important;
+		}
+
+
+		@include breakpoint(600px) {
+			display: none;
+		}
+
+
+		.religions-img {
+			width: $col-vw * 4;
+			margin-bottom: $col-vw / 2;
+
+			&::after {
+				content: '';
+				background: $color3;
+				display: block;
+				width: 3px;
+				height: $col-vw * 0.75;
+			}
+		}
+	}
+
+	.religions-text-col {
+		display: flex;
+		flex-direction: row;
+		align-items: start;
+		justify-content: space-between;
+
+		@include breakpoint(768px) {
+			width: ($col-vw * 7) !important;
+			justify-content: center;
+		}
+
+
+		@include breakpoint(600px) {
+			width: 100% !important;
+			padding: 0 $col-vw;
+		}
+
+
+		.religions-content {
+			width: $col-vw * 3;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+
+			@include breakpoint(768px) {
+				width: $col-vw * 5;
+			}
+
+
+			@include breakpoint(600px) {
+				width: 100%;
+			}
+
+
+			.religions-svg {
+				width: $col-vw * 1.25;
+				margin-bottom: $col-vw;
+				align-self: center;
+
+				@include breakpoint(768px) {
+					display: none;
+				}
+			}
+
+			.religions-title {
+				color: $color1;
+				margin-bottom: $col-vw / 2;
+			}
+		}
+	}
+
+	.blue-block-col {
+		background: $color1;
+		height: $col-vw * 4.5;
+		align-self: flex-start;
+		width: $col-vw;
+
+		@include breakpoint(768px) {
+			display: none;
+		}
+	}
+}
+
+//VIDEO ROW
+.video-row {
+	background: $color2;
+	padding-top: $col-vw;
+
+	@include breakpoint(600px) {
+		position: relative;
+
+		&::before {
+			content: '';
+			background: $color2;
+			width: $col-vw * 2;
+			height: $col-vw * 2;
+			position: absolute;
+			top: 0;
+			transform: translateY(-90%);
+		}
+	}
+
+
+	.video-preview {
+		width: $col-vw * 10.5;
+		height: $col-vw * 4.5;
+		display: flex;
+		align-items: center;
+		background-size: cover;
+
+		@include breakpoint(900px) {
+			width: $col-vw * 11;
+		}
+
+
+		@include breakpoint(600px) {
+			width: 100%;
+			height: $col-vw * 6;
+		}
+
+
+		&::after {
+			content: 'Solving Human-Centered Problems';
+			display: inline-block;
+			transform: rotate(90deg) translateY(-#{$col-vw * 0.66});
+			transform-origin: center;
+			position: absolute;
+			right: 0;
+			color: $white;
+			font: $h4;
+
+			@include breakpoint(900px) {
+				display: none;
+			}
+		}
+
+		.video-line {
+			width: $border * 3;
+			height: $col-vw * 3.75;
+			background: $color3;
+
+			@include breakpoint(768px) {
+				display: none;
+			}
+		}
+
+		.video-play {
+			align-self: flex-end;
+			margin-left: auto;
+			margin-right: $col-vw / 2;
+			margin-bottom: $col-vw / 3;
+			font-size: 4em;
+			cursor: pointer;
+
+			@include breakpoint(480px) {
+				font-size: 3em;
+			}
+		}
+	}
+
+	.video-author {
+		padding: ($col-vw / 3) 0 ($col-vw / 3) $col-vw;
+
+		@include breakpoint(600px) {
+			padding: ($col-vw / 3) 0;
+			text-align: center;
+		}
+	}
+}
+
+//ATTEND
+.attend-row {
+	padding-top: $col-vw;
+
+	.pop-flex {
+		margin-bottom: $col-vw;
+
+		@include breakpoint(600px) {
+			display: none !important;
+		}
+	}
+
+	@include breakpoint(768px) {
+		.attend-cols > div {
+			flex-wrap: wrap;
+		}
+	}
+
+
+	.attend-text {
+		@include breakpoint(768px) {
+			flex-basis: $col * 6;
+		}
+
+
+		@include breakpoint(600px) {
+			flex-basis: 100%;
+		}
+
+
+		.attend-text-inner {
+			padding: $col-vw;
+			padding-top: $col-vw / 2;
+			background: $color2;
+
+			@include breakpoint(600px) {
+				padding-top: $col-vw;
+			}
+		}
+
+		.attend-line {
+			content: '';
+			background: $color3;
+			width: 3px;
+			display: block;
+			transform: translateY(-$col-vw * 0.85);
+			margin: 0 auto;
+			height: $col-vw * 0.66;
+
+			@include breakpoint(600px) {
+				display: none;
+			}
+		}
+
+		.attend-title {
+			font-size: 0.8em;
+			padding-bottom: $col-vw / 2;
+			margin-top: -$col-vw * 0.66;
+
+			@include breakpoint(600px) {
+				display: none;
+			}
+		}
+	}
+
+	.attend-img {
+		height: $col-vw * 5;
+		position: relative;
+
+		@include breakpoint(768px) {
+			flex-basis: $col * 5;
+		}
+
+
+		@include breakpoint(600px) {
+			flex-basis: 100%;
+			height: $col-vw * 12;
+			order: -1;
+
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 50%;
+				width: $border;
+				height: $col-vw * 0.66;
+				background: $color3;
+				transform: translateY(-50%);
+			}
+		}
+
+
+		.attend-img-block {
+			display: block;
+			width: $col-vw;
+			height: $col-vw * 3.25;
+			background: $color3;
+			right: 0;
+			top: $col-vw * 2.5;
+			position: absolute;
+			transform: translateX(50%);
+
+			@include breakpoint(768px) {
+				transform: translateX(100%);
+				top: 0;
+			}
+
+
+			@include breakpoint(600px) {
+				transform: translateX(0) translateY(-$col-vw / 4);
+				height: $col-vw * 7;
+			}
+		}
+	}
+
+	.attend-cta {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		white-space: nowrap;
+
+		@include breakpoint(768px) {
+			order: -2;
+			flex-basis: 100%;
+			justify-content: start;
+		}
+
+
+		@include breakpoint(600px) {
+			justify-content: center;
+		}
+
+
+		.attend-cta-text {
+			display: block;
+			transform: rotate(90deg);
+			border-top: ($border * 3) solid $color3;
+			padding-top: $col-vw * 0.75;
+			overflow: visible;
+			width: fit-content;
+			text-align: center;
+			height: $col-vw * 2;
+			align-self: center;
+
+			@include breakpoint(768px) {
+				transform: none;
+				width: auto;
+				border: 0;
+				width: $col-vw * 6;
+				align-self: flex-start;
+				height: $col-vw;
+				padding-top: 0;
+			}
+
+
+			@include breakpoint(600px) {
+				width: 100%;
+				margin-bottom: $col-vw;
+				padding-top: $col-vw / 2;
+			}
+		}
+	}
+}
+
+//SPONSORS
+.sponsor-row {
+	padding-top: $col-vw * 1.5;
+
+	.sponsor-title {
+		text-align: center;
+		margin-bottom: $col-vw / 4;
+	}
+
+	.sponsor-logos {
+		.sponsor-logo-col {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-around;
+			padding: ($col-vw / 4) 0;
+
+			//For browsers that support it
+			justify-content: space-evenly;
+
+			&:first-child {
+				border-right: 3px solid $color3;
+			}
+
+			img {
+				padding: ($col-vw / 4) 0;
+			}
+		}
+	}
+}
+
+//PARTNERS
+.partner-row {
+	margin-top: $col-vw / 2;
+	padding-bottom: $col-vw / 2;
+
+	.optic-cols > div {
+		@include breakpoint(600px) {
+			flex-wrap: wrap;
+		}
+
+
+		.optic-logo-col {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+
+			@include breakpoint(600px) {
+				flex-basis: 100%;
+				padding: $col-vw 0;
+			}
+
+
+			.side-link {
+				@include breakpoint(600px) {
+					display: none;
+				}
+			}
+
+			.optic-title {
+				text-align: center;
+				color: $color1;
+				text-transform: uppercase;
+				line-height: 1em !important;
+
+				@include breakpoint(600px) {
+					padding: $col-vw 0;
+				}
+			}
+
+			.optic-logo {
+				width: $col-vw * 2.5;
+
+				@include breakpoint(600px) {
+					width: $col-vw * 6;
+					margin-bottom: $col-vw;
+				}
+			}
+		}
+
+		.optic-desc-col {
+			background: $color1;
+
+			@include breakpoint(600px) {
+				flex-basis: 100%;
+			}
+
+
+			.side-link {
+				display: none;
+
+				a {
+					color: $white;
+					padding-bottom: $col-vw;
+				}
+
+				@include breakpoint(600px) {
+					display: initial;
+				}
+			}
+
+			.optic-line {
+				text-align: center;
+				display: inline-block;
+				position: relative;
+				margin-left: $col-vw;
+				margin-top: $col-vw / 2;
+				transform: translateX(-50%);
+
+				@include breakpoint(768px) {
+					display: none;
+				}
+
+
+				&::before {
+					content: '';
+					display: block;
+					width: 3px;
+					height: $col-vw * 0.55;
+					background: $color3;
+					position: absolute;
+					left: 50%;
+					transform: translateY(-140%);
+				}
+			}
+
+			.optic-desc {
+				padding: $col-vw;
+				padding-top: $col-vw / 2;
+				padding-left: $col-vw * 2;
+
+				@include breakpoint(768px) {
+					padding-top: $col-vw;
+					padding-left: $col-vw;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(600px) {
+	.footer {
+		.footer-form {
+			background: $white;
+		}
+	}
+}

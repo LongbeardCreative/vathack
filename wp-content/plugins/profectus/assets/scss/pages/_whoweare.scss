@@ -1,0 +1,147 @@
+/******************************************************************
+Stylesheet: Who We Are Page
+
+Styles for Who we are ONLY. If the styles will be used across the site,
+use the _base.scss file.
+******************************************************************/
+//PAGE GLOBALS
+.nav-header {
+	border-color: $color1 !important;
+
+	@include breakpoint(min-width 601px) {
+
+	&:not(.active) .menu-text,
+	.menu-logo {
+		color: $color1 !important;
+	}
+}
+}
+
+@include breakpoint(600px) {
+	.footer-form {
+		display: none;
+	}
+}
+
+.profile-container {
+	width: $col-vw * 10;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	.profile {
+		flex-basis: 30%;
+		margin: 1.5%;
+		background-size: cover;
+		background-position: center;
+		height: $col-vw * 2.5;
+		position: relative;
+
+		@include breakpoint(1000px) {
+			flex-basis: 47%;
+			height: $col-vw * 3;
+		}
+
+		@include breakpoint(600px) {
+			flex-basis: 100%;
+			height: $col-vw * 4.5;
+		}
+
+		&:hover {
+			.profile-text {
+				opacity: 1;
+			}
+
+			&::after {
+				transform: rotate(45deg);
+			}
+		}
+
+		&::after {
+			content: '+';
+			font-size: 2em;
+			color: $color3;
+			position: absolute;
+			bottom: $col-vw / 4;
+			right: $col-vw / 4;
+			transition: $transition;
+		}
+
+		.profile-text {
+			opacity: 0;
+			display: flex;
+			text-align: center;
+			background: transparentize($color1, 0.12);
+			color: $white;
+			height: 100%;
+			width: 100%;
+			align-items: center;
+			transition: $transition;
+			padding: $col-vw / 8;
+		}
+	}
+}
+
+.intro-row {
+	padding: $col-vw * 1.75 $col-vw $col-vw * 0.6 $col-vw * 2;
+
+	@include breakpoint(1500px) {
+		padding-left: $col-vw;
+	}
+
+	.intro-cols {
+		@include breakpoint(1000px) {
+			>div {
+				flex-wrap: wrap;
+			}
+		}
+
+		.box-col {
+			background: $color2;
+			width: $col-vw * 4 !important;
+
+			@include breakpoint(1000px) {
+				width: $col-vw * 10 !important;
+				height: $col-vw * 3;
+			}
+
+			@include breakpoint(600px) {
+				height: $col-vw * 6;
+			}
+
+			.box {
+				background: $color2;
+				width: $col-vw * 4;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				@include breakpoint(1000px) {
+					width: inherit;
+				}
+
+				.box-text {
+					text-transform: uppercase !important;
+					color: $white;
+				}
+			}
+		}
+
+		.desc-col {
+			padding: $col-vw / 2;
+			padding-left: $col-vw * 1.5;
+			flex-grow: 2;
+
+			@include breakpoint(1000px) {
+				width: $col-vw * 10 !important;
+				padding: $col-vw 0;
+			}
+		}
+	}
+}
+
+.advisor-row {
+	margin-bottom: $col-vw;
+}

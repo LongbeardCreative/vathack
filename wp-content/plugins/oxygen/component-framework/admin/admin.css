@@ -1,0 +1,144 @@
+/* Section tabs */
+.ct-template-anchors,
+.ct-template-options-anchors {
+	margin-bottom: 1em;
+}
+.ct-template-anchors label,
+.ct-template-options-anchors label {
+	margin-right: 1em;
+}
+.ct-template-section,
+.ct-template-options-section {
+	display: none;
+}
+.ct-template-section.ct-section-active,
+.ct-template-options-section.ct-section-active {
+	display: block;
+}
+.ct-template-column-left {
+	width: 49%;
+	float: left;
+}
+.ct-clearfix {
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+/* Taxonomies */
+#ct-template-taxonomy-placeholder {
+	display: none;
+}
+.ct-template-taxonomy .ct-taxonomy-relation {
+	text-transform: uppercase;
+}
+.ct-template-taxonomy:last-child .ct-taxonomy-relation {
+	display: none;
+}
+.ct-add-taxonomy {
+	color: #aaa;
+	display: none;
+	cursor: pointer;
+}
+.ct-add-taxonomy:hover {
+	color: #333;
+}
+.ct-template-taxonomy:last-child .ct-add-taxonomy {
+	display: inline-block;
+}
+.ct-remove-taxonomy {
+	color: #aaa;
+	display: none;
+	cursor: pointer;
+}
+.ct-remove-taxonomy:hover {
+	color: #333;
+}
+.ct-template-taxonomy:hover .ct-remove-taxonomy {
+	display: inline-block;
+}
+.ct-template-taxonomy:last-child .ct-remove-taxonomy {
+	display: none;
+}
+
+/* Select2 */
+.select2-container {
+	width: 100% !important;
+}
+.select2-container li {
+	margin-bottom: 0px;
+}
+
+/* Toggle shortcodes */
+#ct-toggle-shortcodes {
+	text-decoration: underline;
+	color: #0073aa;
+	cursor: pointer;
+}
+#ct-toggle-shortcodes:hover {
+	color: #00a0d2;
+}
+#ct-toggle-shortcodes:before {
+	content: "[+] ";
+}
+#ct-toggle-shortcodes.ct-toggle-shortcodes-show:before {
+	content: "[-] ";
+}
+
+/* Post edit screen */
+.ct_template_option_panel {
+	margin-left: 24px;
+	max-width: 450px;
+}
+
+.ct-admin-tooltip-top {
+  margin-top: 12px;
+  font-size: 16px;
+ 
+}
+.ct-admin-tooltip > div {
+	display: inline;
+}
+
+.ct_template_option_panel {
+  padding-top:10px;
+}
+
+.ct-admin-tooltip {
+  display: inline;
+  position: relative;
+}
+.ct-admin-tooltip > span {
+  cursor:pointer;
+  vertical-align: middle;
+}
+.ct-admin-tooltip > div {
+  display: none;
+  position: absolute;
+  left:0;
+  top:-20px;
+  width: 400px;  
+  border: 1px #ccc solid;
+  padding: 10px;
+  background-color:#fff;
+  box-shadow:1px 1px 12px rgba(0,0,0,0.2);
+}
+.ct-admin-tooltip:hover > span {
+  display:none;
+}
+
+.ct-admin-tooltip:hover > div {
+  display:block;
+}
+
+.ct_template_option_panel {
+  padding-top:10px;
+}
+
+/* License screen */
+.oxygen-license-wrap h2 {
+	margin-bottom: 0px;
+}
+.oxygen-license-wrap .submit {
+	margin-top: 0px;
+}

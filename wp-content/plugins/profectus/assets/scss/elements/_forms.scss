@@ -1,0 +1,45 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Gravity Form Styles
+
+For universal gravity forms style overrides. For individual page form overrides please use the specific page SCSS file.
+
+This is not an exhaustive list. 
+For other GF CSS classes, go here: https://www.gravityhelp.com/documentation/article/css-targeting-samples/
+******************************************************************/
+
+/*********************
+GRAVITY FORM UNIVERSAL STYLES
+*********************/
+
+body .gform_wrapper { }
+
+body .gform_wrapper .gform_heading .gform_title { }
+
+body .gform_wrapper .gform_heading .gform_description { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield input[type=text] { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield select { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield textarea { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield .gfield_radio { }
+
+body .gform_wrapper .gform_body .gform_fields .gfield .gfield_checkbox {}
+
+/*********************
+ACTIVE STATES
+*********************/
+
+
+// spacing out the password
+input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+

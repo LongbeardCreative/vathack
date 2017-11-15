@@ -1,0 +1,60 @@
+/******************************************************************
+Stylesheet: Typography
+******************************************************************/
+
+/*********************
+FONT FACE
+*********************/
+
+html {
+  font-size: 20px;
+}
+
+// font stacks
+
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: "Georgia", Cambria, Times New Roman, Times, serif;
+
+// theme fonts
+
+$heading-font: 80px "Quantico", $sans-serif;
+$body-font: 400 1em / 1.2em "Montserrat", $sans-serif;
+
+$h1: 800 6em / 6.2em "Quantico", $sans-serif;
+$h2: 400 2.75em / 2.2em "Quantico", $sans-serif;
+$h3: 400 2em / 1em "Quantico", $sans-serif;
+$h4: 600 1.25em / 1.75em "Montserrat", $sans-serif;
+$h5: 400 2em / 2.2em "Montserrat", $sans-serif;
+$h6: 400 1.25em / 1.25em "Montserrat", $sans-serif;
+
+.sub-para {
+  font-size: 0.85em;
+}
+
+// Setting universal font styles
+
+p {
+  font: $body-font;
+  -ms-word-wrap: break-word;
+  word-break: break-word;
+
+  //non-standart css for webkit
+  word-wrap: break-word;
+
+  // cleaning up the ragged lines and breaks
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+
+  // sets a minimum number of characters before and after the break
+  -webkit-hyphenate-before: 2;
+  -webkit-hyphenate-after: 3;
+  hyphenate-lines: 3;
+
+  // enabling fancy ligatures when available
+  -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga", "dlig";
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "kern" 1, "dlig" 1;
+}

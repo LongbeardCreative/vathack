@@ -1,0 +1,54 @@
+/*********************
+IMPORT ELEMENTS
+*********************/
+
+// Sass variables
+@import "elements/variables";
+
+// typography
+@import "elements/typography";
+
+// import mixin
+@import "elements/mixins";
+
+// buttons
+@import "elements/buttons";
+
+// forms (inputs & labels)
+@import "elements/forms";
+
+/*********************
+IMPORT PAGES
+*********************/
+
+// Homepage
+.home {
+	@import "pages/homepage";
+}
+
+//FAQ
+.page-id-21 {
+	@import "pages/faq";
+}
+
+//Who We Are
+.page-id-58 {
+	@import "pages/whoweare";
+}
+
+// Post template
+.single-post {
+	@import "pages/post";
+}
+
+// styles in base.scss
+@import "pages/base";
+
+/*********************
+PRINT STYLESHEET
+*********************/
+
+@media print {
+	// styles in print.scss
+	@import "elements/print";
+}

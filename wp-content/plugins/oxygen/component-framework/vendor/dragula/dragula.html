@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by Sherbrow (http://jsbin.com/xefomo/)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<html>
+<head>
+<meta name="robots" content="noindex">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+<script src="http://www.sherbrow.fr/cdn/dragula/dragula.min.js"></script>
+<script src="http://www.sherbrow.fr/cdn/prism/prism.min.js"></script>
+    <link href="http://www.sherbrow.fr/cdn/dragula/dragula.min.css" rel="stylesheet" type="text/css">
+    <link href="http://www.sherbrow.fr/cdn/prism/prism.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8">
+  <title>HTML - Flow 1</title>
+<style id="jsbin-css">
+#playground {
+    border: 1px solid black;
+    padding: 1ex;
+}
+
+.lorem,
+.img {
+    display: none;
+}
+
+.elt-block,
+.elt-br,
+.elt-hr,
+.elt-inline-block,
+.elt-inline {
+    border: 1px solid #EEE;
+    border-color: hsla(0, 0%, 93%, 0.7);
+}
+.elt-block:hover,
+.elt-br:hover,
+.elt-hr:hover,
+.elt-inline-block:hover,
+.elt-inline:hover {
+    border: 1px solid #777;
+    border-color: hsla(0, 0%, 47%, 0.7);
+}
+.elt-inline-block {
+    padding: 0 8ex;
+}
+.elt-block .elt-block {
+    margin: 0.5ex;
+}
+.elt-block  {
+    padding: 0.5ex;
+}
+#playground > .elt-block > .elt-block,
+#playground > .elt-block > .elt-block > .elt-block > .elt-block,
+#playground > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block {
+    background: hsla(0, 0%, 10%, 0.1);
+}
+#playground > .elt-block > .elt-block > .elt-block,
+#playground > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block,
+#playground > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block > .elt-block {
+    background: white;
+}
+
+#playground .draggable.elt-block {
+    position: relative;
+    padding-top: 1em;
+}
+#playground .draggable.elt-block > .legend {
+    position: absolute;
+    top: 0ex;
+    left: 0.5ex;
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+#playground .draggable.elt-block:hover > .legend {
+    font-weight: bold;
+}
+
+.preview #playground [class*="elt-"] .legend {
+    display: none;
+}
+.preview #playground [class*="elt-"] {
+    border-width: 0;
+}
+.preview #playground .elt-block {
+    background: transparent!important;
+    margin: 0;
+    padding: 0;
+}
+.preview #playground .lorem,
+.preview #playground .img  {
+    display: initial;
+}
+
+.draggable {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+html { background: #F5F5F5; }
+#playground {
+    background: white;
+}
+
+html { height: 100%; }
+body { min-height: 100%;box-sizing: border-box; margin: 0; padding: 1ex; }
+.row{display:-webkit-flex;-webkit-flex-wrap:nowrap;display:flex;flex-wrap:nowrap}.col{-webkit-flex-grow:1;flex-grow:1}
+.row.vertical{-webkit-flex-direction:column;flex-direction:column;}
+.row.wrap{-webkit-flex-wrap:wrap;flex-wrap:wrap}
+</style>
+</head>
+<body class="row vertical" id="vm" data-bind="css: { preview: preview}">
+    <p>Drag and drop elements in the playground</p>
+    <div id="elements"><h2>Elements</h2>
+        <div class="elt-block elt-accepts draggable" data-code="\n%t%<div>\n%t%\t%c%\n%t%&lt;/div&gt;\n%t%"><span class="legend handle">handle</span>
+            <h1>Headline</h1>
+        </div>
+        <span class="elt-inline draggable" data-code="<span></span>"><span class="handle">inline</span></span>
+        <span class="elt-inline-block draggable" data-code="<span class=&quot;inline-block&quot;></span>"><span class="handle">inline-block</span></span>
+        <span class="elt-br draggable" data-code="<br>\n%t%" title="linebreak"><span class="legend handle">br</span><br class="handle"></span>
+        <span class="elt-hr draggable" data-code="<hr>\n%t%" title="linebreak"><span class="legend handle">hr</span><hr class="handle"></span>
+        <button class="draggable" data-code="<button>&lt;/button&gt;">button</button><br>
+        <a class="draggable" data-code="<a href=&quot;&quot;>&lt;/a&gt;" onclick="event.preventDefault();" href="#">hypertext link</a><br>
+        <span class="elt-inline draggable" data-code="lorem"><span class="legend handle">text</span><span class="lorem handle"></span></span>
+        <span class="elt-inline draggable" data-rotatePixel="1" data-code="<img src=&quot;&quot; alt=&quot;&quot;>"><span class="legend handle">image</span><img src="http://lorempixel.com/200/100/cats/1" class="img handle"></span>
+    </div>
+    <div id="playground-container" class="col row vertical"><h2>Playground</h2>
+        <div id="playground" class="col accept-drops" data-code="%c%">
+             
+        </div>
+        <div id="output" class="col" data-bind="visible: outputVisible">
+             <pre class="line-numbers"><code id="output-code" class="language-markup"></code></pre>
+        </div>
+    </div>
+    <fieldset>
+        <legend>Options</legend>
+        <label><input type="checkbox" data-bind="checked: preview"> Preview</label>
+        <label><input type="checkbox" data-bind="checked: outputVisible"> Output</label>
+    </fieldset>
+<script id="jsbin-javascript">
+var $elements = document.getElementById('elements');
+var $playground = document.getElementById('playground');
+var dragBottomBubble = null;
+var drake = dragula([$elements, $playground], {
+    moves: function(el, ctn, target) {
+        return target.classList.contains('draggable') || target.classList.contains('handle');
+    },
+    accepts: function (el, target, source, sibling) {
+        if(target.classList.contains('gu-transit') || !target.classList.contains('accept-drops')) return false;
+        return true;
+        /*
+        Since dragged-child class, containers children are already tagged off as not-containers, no need to verify
+        if(target == $playground) return true;
+        var parent = target;
+        while( (parent=parent.parentNode) ) {
+            console.log(el, parent);
+            if(parent == $playground) break;
+            if(parent.classList.contains('gu-transit'))
+                return false;
+        }
+        return true;
+        */
+    },
+    copy: function(el) {
+        if(el.classList.contains('clone'))
+            return false;
+        return true;
+    },
+    copySortSource: true,
+    removeOnSpill: true,
+    invalidChildren: false,
+    invalid: function(el, target) {
+        console.log('invalid', el);
+        var isInvalid = false;
+        // If the element is somehow the event target parent and (redundant check) that it actually accept drops, which proves that the target might indeed accept a draggable dropped there
+        if(el.classList.contains('handle'))
+           isInvalid = false;
+         else if(el != target && el.classList.contains('accept-drops') && dragBottomBubble) {
+            isInvalid = true;
+         }
+        else if(el.classList.contains('draggable')) dragBottomBubble = el;
+        return isInvalid;
+    },
+});
+drake.on('cloned', function(clone) {
+    clone.classList.add('clone');
+});
+var pseudo_containers = [];
+drake.on('drop', function(el) {
+    if(el.classList.contains('elt-accepts') && !el.classList.contains('accept-drops')) {
+        el.classList.add('accept-drops');
+        pseudo_containers.push(el);
+    }
+});
+drake.on('dragend', function(el) {
+    dragBottomBubble = null;
+    drake.containers.splice(2,drake.containers.length-2); // Those 2 first are the elements breeding place, keep them
+    var i=0;
+    var elts = document.querySelectorAll('.dragged-child');
+    for(i=0;i<elts.length;++i) {
+        elts[i].classList.remove('dragged-child');
+    }
+});
+drake.on('drag', function(el) {
+    console.log('drag', el);
+    var i=0;
+    var elts = el.querySelectorAll('.accept-drops');
+    for(i=0;i<elts.length;++i) {
+        elts[i].classList.add('dragged-child');
+    }
+    for(i=0;i<pseudo_containers.length;++i) {
+        if(pseudo_containers[i] == el || pseudo_containers[i].classList.contains('dragged-child')) continue;
+        drake.containers.push(pseudo_containers[i]);
+    }
+});
+
+
+var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at gravida lectus. Pellentesque tincidunt sem a tellus hendrerit, a maximus erat gravida. Pellentesque luctus risus non ipsum ultrices euismod. Aliquam sem nisl, vehicula sed tristique ac, elementum vitae turpis. Cras et feugiat tortor.",
+    lorem2 = "Praesent sed hendrerit nisl. Fusce ullamcorper tristique sem, et tempor ipsum tincidunt in. Mauris porttitor ante tortor, a mattis lectus tristique tristique. Pellentesque nec massa ut lorem eleifend mattis in in ante. Donec faucibus purus luctus augue tincidunt placerat. Morbi in eleifend enim.";
+
+var elts = document.querySelectorAll('.lorem');
+for(var i=0;i<elts.length;++i)
+    elts[i].textContent = lorem;
+</script>
+</body>
+</html>

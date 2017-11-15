@@ -1,0 +1,49 @@
+/******************************************************************
+
+Stylesheet: Variables
+
+******************************************************************/
+
+/* Colours */
+
+$color1: #007CDB;
+$color2: #79BAEC;
+$color3: #E9BE46;
+$color4: #95989A;
+$color-hover: #E9BE46;
+$color-active: #009fb7;
+
+$color-p: #95989A;
+$text-gray: #95989A;
+$white: #ffffff;
+$gray: #95989A;
+$black: #000000;
+
+$col-vw: 100vw / 12;
+$col: 100% / 12;
+
+/* Spacing / Padding */
+
+$padding-top: 90px;
+$padding-left: 136px;
+$padding-right: 136px;
+$padding-bottom: 90px;
+$padding: 90px 136px;
+
+$heading-space: 30px;
+
+$border: 3px;
+
+@media screen and (max-width: 600px) {
+	$border: 2px;
+}
+
+$transition: 0.28s ease-in-out;
+
+.opacity-hover {
+	transition: opacity $transition;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
